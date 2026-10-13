@@ -234,7 +234,7 @@ def main():
             path = os.path.join(repo, lang, rel, slug + '.md')
             os.makedirs(os.path.dirname(path), exist_ok=True)
             with open(path, 'w', encoding='utf-8', newline='\n') as fh:
-                fh.write(text)
+                fh.write(text.replace('\r', ''))
             counts[(lang, rel.split('/')[0] if not rel.startswith('other') else 'other',
                     STATUS.get(dd.get('status'), 'unknown'))] += 1
     for k in sorted(counts):
